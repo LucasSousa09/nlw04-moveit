@@ -24,6 +24,7 @@
 
 .countdownContainer > div span{
     flex: 1;
+    width: 4.5rem;
 }
 
 .countdownContainer > div span:first-child{
@@ -69,7 +70,14 @@
     background-color: var(--white);
     color: var(--text);
     cursor: not-allowed;
+
+    border-bottom: 4px solid var(--green)
 }
+
+.countdownButton:disabled img{
+    padding-left: .5rem;
+}
+
 
 .countdownButtonActive{
     background: var(--white);
