@@ -1,0 +1,154 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    
+
+    width: 100vw;
+    height: 100vh;
+
+    background: url("/login_background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: left;
+}
+
+/* Login Container ------------------------------------------- */
+
+.loginContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    width: 45%;
+    height: 100%;
+}
+
+.loginContainer > img{
+    padding-bottom: 5rem;
+    width: 20rem;
+}
+
+.loginContainer h1{
+    padding-bottom: 1.5rem;
+    color: var(--white);
+
+    font-weight: 600
+}
+
+/* GitHub Container ------------------------------------------- */
+
+.loginContainer .githubContainer{
+    display: flex;
+    align-items: center;
+
+    padding-bottom: 3rem;
+}
+
+.loginContainer .githubContainer p{
+    padding-left: 1.5rem;
+    color: var(--text-highlight);
+    width: 17rem;
+
+    line-height: 1.5;
+
+    font-weight: 500;
+}
+
+.loginContainer .githubContainer img{
+    width: 2rem;
+}
+
+/* Input Container ------------------------------------------- */
+
+.loginContainer .inputContainer{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.loginContainer .inputContainer input{
+    width: 17.5rem;
+    height: 3.5rem;
+
+    border: none;
+    border-radius: 4px;
+
+    text-indent: 1rem;
+
+    background: linear-gradient(to right, rgba(81,73,184,1),  rgba(81,73,184,1), rgba(81,73,184,0) );
+    color: var(--text-highlight);
+
+    transition: 0.2s;
+}
+
+.loginContainer .inputContainer input::placeholder{
+    color: var(--text-highlight)
+}
+
+.loginContainer .inputContainer input:focus{
+    outline: 3px solid rgb(25, 18, 118);
+    outline-offset: -3px;
+}
+
+
+.loginContainer .inputContainer button{
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #4953B8;
+
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.3);
+    
+    transition: 0.2s;
+}
+
+.loginContainer .inputContainer button:hover{
+    transform: scale(1.02)
+}
+.loginContainer .inputContainer button:focus{
+    outline: none;
+    box-shadow: 0 0 0 3px rgb(25, 18, 118);  
+}
+
+.loginContainer .inputContainer button:active{
+    transform: scale(0.98)
+}
+
+.loginContainer .inputContainer button img{
+    width: 1.25rem;
+}
+
+@media(max-width:900px){
+    .loginContainer{
+        width: 50%;
+    }
+}
+
+@media(max-width:720px){
+    .loginContainer{
+        width: 55%;
+    }
+}
+
+@media(max-width:620px){
+    .container{
+        align-items: center;
+    }
+    .loginContainer{
+        width: 21rem;
+        align-items: center;
+    }
+    .loginContainer > img{
+        margin-top: -2rem;
+    }
+    .loginContainer h1{
+        width: 100%;
+    }
+    .loginContainer .githubContainer{
+        width: 100%;
+    }
+}

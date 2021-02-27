@@ -20,5 +20,27 @@
 }
 
 .container section > div{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
     height: 100%;
+}
+
+@media(max-width: 660px){
+    .container section{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .container section .leftSide{
+        width: 90%;
+        max-width: 400px; 
+    }
+    .container section .rightSide{
+        width: 90%;
+        max-width: 400px;
+    }
 }

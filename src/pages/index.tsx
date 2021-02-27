@@ -18,7 +18,6 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-
   return (
     <ChallengesProvider
       level={props.level}
@@ -32,12 +31,12 @@ export default function Home(props: HomeProps) {
         <ExperienceBar />
         <CountdownProvider>
           <section>
-            <div>
+            <div className={styles.leftSide}>
               <Profile />
               <CompletedChalenges />
               <Countdown />
             </div>
-            <div>
+            <div className={styles.rightSide}>
               <ChallengeBox />
             </div>
           </section>
@@ -49,11 +48,12 @@ export default function Home(props: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { level, currentExperience, challengesCompleted } = context.req.cookies
+
   return {
     props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
+      level: Number(level ?? 1),
+      currentExperience: Number(currentExperience ?? 0),
+      challengesCompleted: Number(challengesCompleted ?? 0)
     }
   }
 }
