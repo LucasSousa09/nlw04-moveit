@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useEffect, useState } from "react";
+import { createContext, JSXElementConstructor, ReactNode, useContext, useEffect, useState } from "react";
 import { ChallengesContext } from "./ChallengesContext";
 
 interface CountdownContextData {
@@ -6,6 +6,7 @@ interface CountdownContextData {
     seconds: number;
     isActive: boolean;
     hasFinished: boolean;
+    PercentageBar: React.ElementType;
     startCountdown: () => void;
     resetCountdown: () => void;
 }
@@ -20,12 +21,22 @@ let countdownTimeout: NodeJS.Timeout
 export function CountdownProvider({ children }: CountdownProviderProps) {
     const { startNewChallenge } = useContext(ChallengesContext)
 
-    const [time, setTime] = useState(.1 * 60)
+    const [time, setTime] = useState(25 * 60)
     const [isActive, setIsActive] = useState(false)
     const [hasFinished, setHasFinished] = useState(false)
+    const [barPercentage, setBarPercentage] = useState(0)
+
 
     const minutes = Math.floor(time / 60);
     const seconds = time % 60;
+    let percent = 100 / (25 * 60)
+
+    // Width: 1000%
+
+    useEffect(() => {
+        setBarPercentage(barPercentage + percent)
+        console.log(barPercentage)
+    }, [time])
 
     function startCountdown() {
         setIsActive(true)
@@ -33,7 +44,7 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
     function resetCountdown() {
         clearTimeout(countdownTimeout)
         setIsActive(false)
-        setTime(.1 * 60)
+        setTime(25 * 60)
         setHasFinished(false)
     }
 
@@ -50,6 +61,14 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
         }
     }, [isActive, time])
 
+    function PercentageBar() {
+        return (
+            <div style={{ height: '4px', width: '100%', background: 'var(--gray-line)' }}>
+                <div style={{ height: '4px', width: `${barPercentage}%`, backgroundColor: "var(--green)", transition: '1s ease' }}></div>
+            </div>
+        )
+    }
+
 
     return (
         <CountdownContext.Provider value={{
@@ -58,7 +77,8 @@ export function CountdownProvider({ children }: CountdownProviderProps) {
             isActive,
             hasFinished,
             startCountdown,
-            resetCountdown
+            resetCountdown,
+            PercentageBar,
         }}>
             { children}
         </CountdownContext.Provider>
