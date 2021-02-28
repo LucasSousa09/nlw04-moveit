@@ -1,6 +1,7 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
 
+import { SideBar } from '../components/SideBar'
 import { ExperienceBar } from '../components/ExperienceBar'
 import { Profile } from '../components/Profile'
 import { CompletedChalenges } from '../components/CompletedChalenges'
@@ -24,23 +25,26 @@ export default function Home(props: HomeProps) {
       currentExperience={props.currentExperience}
       challengesCompleted={props.challengesCompleted}
     >
-      <div className={styles.container}>
-        <Head>
-          <title>Início | move.it</title>
-        </Head>
-        <ExperienceBar />
-        <CountdownProvider>
-          <section>
-            <div className={styles.leftSide}>
-              <Profile />
-              <CompletedChalenges />
-              <Countdown />
-            </div>
-            <div className={styles.rightSide}>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
+      <div className={styles.gridContainer}>
+        <SideBar />
+        <div className={styles.container}>
+          <Head>
+            <title>Início | move.it</title>
+          </Head>
+          <ExperienceBar />
+          <CountdownProvider>
+            <section>
+              <div className={styles.leftSide}>
+                <Profile />
+                <CompletedChalenges />
+                <Countdown />
+              </div>
+              <div className={styles.rightSide}>
+                <ChallengeBox />
+              </div>
+            </section>
+          </CountdownProvider>
+        </div>
       </div>
     </ChallengesProvider>
   )
@@ -48,7 +52,6 @@ export default function Home(props: HomeProps) {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { level, currentExperience, challengesCompleted } = context.req.cookies
-
   return {
     props: {
       level: Number(level ?? 1),

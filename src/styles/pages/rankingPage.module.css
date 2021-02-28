@@ -1,0 +1,107 @@
+.gridContainer{
+    display: grid;
+    grid-template-columns: 4rem auto;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+
+    height: 100vh;
+    width: 67%;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2.5rem 2rem;
+}
+
+.container > h1 {
+    margin-bottom: 2rem;
+    color: var(--title);
+    
+    font-weight: 600;
+}
+
+.container table{
+    border-spacing: 0rem;
+}
+
+.container table th{
+    text-transform: uppercase;
+    text-align: start;
+    opacity: 0.5;
+
+    font-size: .7rem;
+    font-weight: 600;
+
+    padding-bottom: 1rem;
+}
+
+.container table th:first-child{
+    width: 4rem;
+}
+
+.container table th:nth-child(2){
+    width: 50%;
+    text-indent: 1rem;
+}
+
+.container table td{
+    text-align: center;
+    height: 4rem;
+    background-color: var(--white);
+}
+
+.container table td:nth-child(3),
+.container table td:nth-child(4){
+    text-align: left;
+    font-size: .8rem;
+}
+
+.container table td:nth-child(3) span,
+.container table td:nth-child(4) span{
+    color: #5965E0;
+}
+
+.container table td:first-child{
+    border-right: 1px solid var(--gray-line)
+}
+
+.container table td > div{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    padding-left: 1rem;
+}
+
+.container table td div img{
+    width: 2.5rem;
+    border-radius: 50%;
+}
+
+.spanContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+
+    padding-left: 1rem
+}
+
+.spanContainer span:first-child{
+    color: var(--title);
+    font-weight: 500;
+}
+
+.spanContainer span:last-child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .8rem;
+}
+
+.spanContainer span:last-child img{
+    width: .8rem;
+    margin-right: .4rem;
+}
+
