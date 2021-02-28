@@ -9,7 +9,7 @@
     width: 5rem;
     height: 100vh;
 
-    background-color: var(--white);
+    background: linear-gradient(to bottom, #fff, #F2F3F5);
 }
 
 .container > img{
