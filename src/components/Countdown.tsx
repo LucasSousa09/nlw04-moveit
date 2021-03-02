@@ -1,5 +1,6 @@
 import { useContext } from 'react'
 import { CountdownContext } from '../contexts/CountdownContext'
+import { PercentageBar } from '../components/PercentageBar'
 import styles from '../styles/components/Countdown.module.css'
 
 export function Countdown() {
@@ -10,7 +11,6 @@ export function Countdown() {
         isActive,
         startCountdown,
         resetCountdown,
-        PercentageBar
     } = useContext(CountdownContext)
 
     const [minuteLeft, minuteRight] = String(minutes).padStart(2, '0').split('')
@@ -46,6 +46,7 @@ export function Countdown() {
                             onClick={resetCountdown}>
                             Abandonar ciclo
                             <PercentageBar />
+                            <img src="/icons/x-icon.svg" alt="X Icon" />
                         </button>
                     ) : (
                             <button
@@ -53,6 +54,7 @@ export function Countdown() {
                                 className={styles.countdownButton}
                                 onClick={() => { startCountdown() }}>
                                 Iniciar um ciclo
+                                <img src="/icons/play_arrow.svg" alt="Play Icon" />
                             </button>
                         )}
                 </>}

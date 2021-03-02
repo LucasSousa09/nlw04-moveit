@@ -64,6 +64,10 @@
     overflow: hidden;
 }
 
+.countdownButton img{
+    padding-left: 1rem;
+}
+
 .countdownButton:not([disabled]):hover{
     background: var(--blue-dark)
 }
@@ -72,16 +76,7 @@
     background-color: var(--white);
     color: var(--text);
     cursor: not-allowed;
-}
-
-.countdownButton > div{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    height: 4px;
-    width: 15px;
-    background-color: var(--green);
+    border-bottom: 4px solid var(--green)
 }
 
 .countdownButton:disabled img{
@@ -96,4 +91,8 @@
 .countdownButtonActive:not([disabled]):hover{
     background: var(--red);
     color: var(--white)
+}
+
+.countdownButtonActive:not([disabled]):hover > div{
+    display: none;
 }

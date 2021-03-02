@@ -20,6 +20,8 @@
     box-shadow: 0 0 60px rgba(0,0,0,0.05);
     text-align: center;
     position: relative;
+
+    overflow: hidden;
 }
 
 .container header{
@@ -35,13 +37,14 @@
     color: var(--title);
 }
 
-.containter p{
-    font-size: 1.25rem;
+.container p{
+    font-size: 1rem;
     color: var(--text);
     margin-top: 0.25rem;
+    margin-bottom: 3.5rem;
 }
 
-.container button{
+.container button:nth-child(4){
     position: absolute;
     right: 0.5rem;
     top: 0.5rem;
@@ -50,4 +53,42 @@
     border: 0;
 
     font-size: 0;
+}
+
+.container button:last-child{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 4rem;
+    width: 100%;
+
+    background-color: #F5FCFF;
+    border: 0;
+
+    color: #2AA9E0;
+
+    transition: .2s ease;
+}
+
+.container button:last-child:hover{
+    background-color: #2AA9E0;
+    color: #F5FCFF;
+}
+.container button:last-child:focus{
+    outline-color: #2AA9E0;
+    outline-offset: -1px;
+}
+
+
+.container button:last-child:hover svg path{
+    fill: #F5FCFF;
+}
+
+.container button svg {
+    margin-left: 1rem;
 }

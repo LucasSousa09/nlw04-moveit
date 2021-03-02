@@ -66,7 +66,9 @@
 .loginContainer .inputContainer{
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
+
+    width: 21rem
 }
 
 .loginContainer .inputContainer input{
@@ -74,33 +76,35 @@
     height: 3.5rem;
 
     border: none;
-    border-radius: 4px;
+    border-radius: 4px 0 0 4px;
 
     text-indent: 1rem;
 
     background: linear-gradient(to right, rgba(81,73,184,1),  rgba(81,73,184,1), rgba(81,73,184,0) );
     color: var(--text-highlight);
-
-    transition: 0.2s;
 }
 
 .loginContainer .inputContainer input::placeholder{
     color: var(--text-highlight)
 }
 
-.loginContainer .inputContainer input:focus{
-    outline: 3px solid rgb(25, 18, 118);
-    outline-offset: -3px;
+.loginContainer .inputContainer input:focus,
+.loginContainer .inputContainer input:hover
+{
+    /* outline: none;
+    box-shadow: 0 0 0 1px #414AA3; */
+
+    outline: 2.5px solid rgb(25, 18, 118);
+    outline-offset: -2.5px;
 }
 
 
 .loginContainer .inputContainer button{
     width: 3.5rem;
     height: 3.5rem;
-    background: #4953B8;
 
     border: none;
-    border-radius: 4px;
+    border-radius: 0 4px 4px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,.3);
     
     transition: 0.2s;
@@ -111,7 +115,7 @@
 }
 .loginContainer .inputContainer button:focus{
     outline: none;
-    box-shadow: 0 0 0 3px rgb(25, 18, 118);  
+    box-shadow: 0 0 0 2.5px rgb(6, 39, 6);  
 }
 
 .loginContainer .inputContainer button:active{

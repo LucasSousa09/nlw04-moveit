@@ -1,3 +1,5 @@
+import React from 'react'
+import Head from 'next/head'
 import { SideBar } from '../components/SideBar'
 import styles from '../styles/pages/rankingPage.module.css'
 
@@ -6,6 +8,9 @@ export default function rankingPage() {
         <div className={styles.gridContainer}>
             <SideBar />
             <div className={styles.container}>
+                <Head>
+                    <title>Ranking | move.it</title>
+                </Head>
                 <h1>Leaderboard</h1>
                 <table>
                     <thead>
