@@ -92,3 +92,9 @@
 .container button svg {
     margin-left: 1rem;
 }
+
+@media(max-width: 660px){
+    .container{
+        width: 85%
+    }
+}

@@ -1,0 +1,10 @@
+@media(max-width: 660px){
+section .leftSide{
+    width: 100%;
+    max-width: 400px; 
+}
+section .rightSide{
+    width: 90%;
+    max-width: 400px;
+}
+}
