@@ -3,11 +3,6 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-interface HTMLElementsValue {
-    homePage: HTMLElement;
-    gEl: HTMLElement;
-}
-
 export function SideBar() {
     const router = useRouter()
 
