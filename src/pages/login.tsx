@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { useEffect, useState } from 'react'
+import { SyntheticEvent, useEffect, useState } from 'react'
 
 import styles from '../styles/pages/Login.module.css'
 
@@ -7,9 +7,10 @@ export default function Login() {
     const [buttonColor, setButtonColor] = useState('#4953B8')
 
     useEffect(() => {
-        let inputEl = document.getElementById('input')
-        inputEl.addEventListener('keyup', (evt) => {
-            if (evt.target.value === '') {
+        let inputEl = document.getElementById('input') as HTMLInputElement
+        inputEl.addEventListener('keyup', (evt: KeyboardEvent) => {
+
+            if (inputEl.value === '') {
                 setButtonColor('#4953B8')
             }
             else {
