@@ -1,14 +1,15 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { useContext, useEffect, useState } from 'react'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 import { Section } from '../components/Section'
 import { SideBar } from '../components/SideBar'
 import { ExperienceBar } from '../components/ExperienceBar'
-import { CountdownContext, CountdownProvider } from '../contexts/CountdownContext'
+import { CountdownProvider } from '../contexts/CountdownContext'
 import { ChallengesProvider } from '../contexts/ChallengesContext'
 
 import styles from '../styles/pages/Home.module.css'
+import React from 'react'
 
 interface HomeProps {
   level: number;
@@ -17,6 +18,8 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
+  const [session, loading] = useSession()
+
   return (
     <ChallengesProvider
       level={props.level}
@@ -30,6 +33,28 @@ export default function Home(props: HomeProps) {
             <title>Início | move.it</title>
           </Head>
           <ExperienceBar />
+          <div style={{ marginTop: '2rem' }}>
+            {!session && (
+              <>
+                Not signed in <br />
+                <button onClick={(): Promise<void> => signIn("auth0")}>Sign In</button>
+              </>
+            )}
+            {session && (
+              <>
+                Signed in as {session.user.email} <br />
+                <button onClick={(): Promise<void> => signOut()}>Sign Out</button>
+              </>
+
+            )
+            }
+            {loading && (
+              <div>
+                <h1>Carregando</h1>
+              </div>
+            )}
+          </div>
+
           <CountdownProvider>
             <Section />
           </CountdownProvider>
