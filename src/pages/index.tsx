@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
-import { signIn, signOut, useSession } from 'next-auth/client'
+// import { signIn, signOut, useSession } from 'next-auth/client'
 
 import { Section } from '../components/Section'
 import { SideBar } from '../components/SideBar'
@@ -18,7 +18,7 @@ interface HomeProps {
 }
 
 export default function Home(props: HomeProps) {
-  const [session, loading] = useSession()
+  // const [session, loading] = useSession()
 
   return (
     <ChallengesProvider
@@ -34,7 +34,7 @@ export default function Home(props: HomeProps) {
           </Head>
           <ExperienceBar />
           <div style={{ marginTop: '2rem' }}>
-            {!session && (
+            {/* {!session && (
               <>
                 Not signed in <br />
                 <button onClick={(): Promise<void> => signIn("auth0")}>Sign In</button>
@@ -52,7 +52,7 @@ export default function Home(props: HomeProps) {
               <div>
                 <h1>Carregando</h1>
               </div>
-            )}
+            )} */}
           </div>
 
           <CountdownProvider>

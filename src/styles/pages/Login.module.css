@@ -110,12 +110,20 @@
     transition: 0.2s;
 }
 
+.loginContainer .inputContainer .connectButton{
+    width: 21rem;
+    border-radius: 4px;
+
+    color: var(--text-highlight);
+    background: var(--blue-dark)
+}
+
 .loginContainer .inputContainer button:hover{
     transform: scale(1.02)
 }
 .loginContainer .inputContainer button:focus{
     outline: none;
-    box-shadow: 0 0 0 2.5px rgb(6, 39, 6);  
+    box-shadow: 0 0 0 2.5px var(--text-highlight);  
 }
 
 .loginContainer .inputContainer button:active{

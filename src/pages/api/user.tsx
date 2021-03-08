@@ -1,4 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+import { useSession } from 'next-auth/client'
+
 import connect from '../../utils/database'
 
 interface ErrorResponseType {

@@ -1,23 +1,13 @@
 import Head from 'next/head'
 import { SyntheticEvent, useEffect, useState } from 'react'
+import connect from '../utils/database'
 
 import styles from '../styles/pages/Login.module.css'
+import { signIn, signOut, useSession } from 'next-auth/client'
 
 export default function Login() {
+    const [session, loading] = useSession()
     const [buttonColor, setButtonColor] = useState('#4953B8')
-
-    useEffect(() => {
-        let inputEl = document.getElementById('input') as HTMLInputElement
-        inputEl.addEventListener('keyup', (evt: KeyboardEvent) => {
-
-            if (inputEl.value === '') {
-                setButtonColor('#4953B8')
-            }
-            else {
-                setButtonColor('#4CD62B')
-            }
-        })
-    }, [])
 
     return (
         <div className={styles.container}>
@@ -26,6 +16,7 @@ export default function Login() {
                     Login | move.it
                 </title>
             </Head>
+
             <div className={styles.loginContainer}>
                 <img src="/logo.png" alt="Logo" />
                 <h1>Bem-vindo</h1>
@@ -34,18 +25,20 @@ export default function Login() {
                     <p>Faça seu login com seu Github para começar</p>
                 </div>
                 <div className={styles.inputContainer}>
-                    <input id="input" type="text" placeholder="Digite seu username" />
-                    {
-                        buttonColor === '#4953B8' ? (
-                            <button style={{ background: `${buttonColor}` }}>
-                                <img src="/icons/arrow_right.png" alt="" />
-                            </button>) : (
-                                <button style={{ background: `${buttonColor}` }}>
-                                    <img src="/icons/arrow_right.png" alt="" />
-                                </button>
-                            )
-                    }
-
+                    <>
+                        {!session && <>
+                            <button className={styles.connectButton} onClick={() => {
+                                signIn(
+                                    'github',
+                                    { callbackUrl: 'http://localhost:3000/' }
+                                )
+                            }}>Connect with GitHub</button>
+                        </>}
+                        {session && <>
+                            Signed in as {session.user.name} <br />
+                            <button onClick={() => signOut()}>Sign out</button>
+                        </>}
+                    </>
                 </div>
             </div>
         </div>
