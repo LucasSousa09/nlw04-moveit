@@ -1,9 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { SideBar } from '../components/SideBar'
 import styles from '../styles/pages/rankingPage.module.css'
 
 export default function rankingPage() {
+    const [windowWidth, setWindowWidth] = useState(0)
+
+    useEffect(() => {
+        setWindowWidth(window.innerWidth)
+        window.addEventListener('resize', () => {
+            setWindowWidth(window.innerWidth)
+        })
+    })
+
     return (
         <div className={styles.gridContainer}>
             <SideBar />
@@ -33,8 +42,16 @@ export default function rankingPage() {
                                     </div>
                                 </div>
                             </td>
-                            <td> <span>127</span> completados</td>
-                            <td> <span>154000</span> xp</td>
+                            {
+                                windowWidth > 720 ?
+                                    <td><span>127</span> completados</td> :
+                                    <td><span>127</span></td>
+                            }
+                            {
+                                windowWidth > 720 ?
+                                    <td><span>154000</span> xp</td> :
+                                    <td><span>154000</span></td>
+                            }
                         </tr>
                     </tbody>
                 </table>

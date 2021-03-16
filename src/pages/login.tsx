@@ -35,8 +35,7 @@ export default function Login() {
                             }}>Connect with GitHub</button>
                         </>}
                         {session && <>
-                            Signed in as {session.user.name} <br />
-                            <button onClick={() => signOut()}>Sign out</button>
+                            <button className={styles.signOutButton} onClick={() => signOut()}>Sign out</button>
                         </>}
                     </>
                 </div>

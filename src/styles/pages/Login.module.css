@@ -98,24 +98,34 @@
     outline-offset: -2.5px;
 }
 
+.loginContainer .inputContainer p{
+    color: var(--text-highlight);
+    font-weight: 500;
+}
 
 .loginContainer .inputContainer button{
-    width: 3.5rem;
     height: 3.5rem;
 
     border: none;
-    border-radius: 0 4px 4px 0;
+    border-radius: 4px;
     box-shadow: 0 2px 5px rgba(0,0,0,.3);
+
+    font-weight: 500;
     
     transition: 0.2s;
 }
 
 .loginContainer .inputContainer .connectButton{
     width: 21rem;
-    border-radius: 4px;
 
     color: var(--text-highlight);
     background: var(--blue-dark)
+}
+.loginContainer .inputContainer .signOutButton{
+    width: 21rem;
+
+    background:#f84a5b;
+    color: #fff;
 }
 
 .loginContainer .inputContainer button:hover{
