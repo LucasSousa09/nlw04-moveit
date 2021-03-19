@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import { SideBar } from '../components/SideBar'
 import styles from '../styles/pages/rankingPage.module.css'
+import connect from '../utils/database'
 
-export default function rankingPage() {
+export default function rankingPage({ users }) {
+
     const [windowWidth, setWindowWidth] = useState(0)
 
     useEffect(() => {
@@ -31,31 +33,51 @@ export default function rankingPage() {
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>
-                                <div>
-                                    <img src="https://avatars.githubusercontent.com/u/69125371?s=460&u=9935753a9ad1f17a1530f834741c7ddba4d23008&v=4" alt="Avatar" />
-                                    <div className={styles.spanContainer}>
-                                        <span>Lucas Rodrigues</span>
-                                        <span> <img src="/icons/level.svg" alt="" /> Level 3</span>
-                                    </div>
-                                </div>
-                            </td>
-                            {
-                                windowWidth > 720 ?
-                                    <td><span>127</span> completados</td> :
-                                    <td><span>127</span></td>
-                            }
-                            {
-                                windowWidth > 720 ?
-                                    <td><span>154000</span> xp</td> :
-                                    <td><span>154000</span></td>
-                            }
-                        </tr>
+                        {
+                            users.map((user, idx) => (
+                                <tr key={idx + 1}>
+                                    <td>{idx + 1}</td>
+                                    <td>
+                                        <div>
+                                            <img src={user.avatar} alt="Avatar" />
+                                            <div className={styles.spanContainer}>
+                                                <span>{user.name}</span>
+                                                <span> <img src="/icons/level.svg" alt="" /> Level {user.level}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    {
+                                        windowWidth > 720 ?
+                                            <td><span>{user.challengesFinished}</span> completados</td> :
+                                            <td><span>{user.challengesFinished}</span></td>
+                                    }
+                                    {
+                                        windowWidth > 720 ?
+                                            <td><span>{user.currentExperience}</span> xp</td> :
+                                            <td><span>{user.currentExperience}</span></td>
+                                    }
+                                </tr>
+                            ))
+                        }
                     </tbody>
                 </table>
             </div>
         </div>
     )
+}
+
+export async function getServerSideProps() {
+    const { db } = await connect();
+    const users = await db
+        .collection("users")
+        .find({})
+        .sort({ currentExperience: -1 })
+        .limit(20)
+        .toArray();
+
+    return {
+        props: {
+            users: JSON.parse(JSON.stringify(users))
+        },
+    };
 }

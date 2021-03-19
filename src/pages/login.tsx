@@ -1,13 +1,11 @@
 import Head from 'next/head'
-import { SyntheticEvent, useEffect, useState } from 'react'
-import connect from '../utils/database'
 
 import styles from '../styles/pages/Login.module.css'
 import { signIn, signOut, useSession } from 'next-auth/client'
 
 export default function Login() {
     const [session, loading] = useSession()
-    const [buttonColor, setButtonColor] = useState('#4953B8')
+    // const [buttonColor, setButtonColor] = useState('#4953B8')
 
     return (
         <div className={styles.container}>

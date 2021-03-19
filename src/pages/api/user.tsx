@@ -7,18 +7,20 @@ interface ErrorResponseType {
 }
 
 interface SuccessResponseType {
+    avatar: string;
     name: string;
-    email: string;
+    level: string;
     currentExperience: number;
     challengesFinished: number;
 }
 
 export default async (req: NextApiRequest, res: NextApiResponse<ErrorResponseType | SuccessResponseType>): Promise<void> => {
     if (req.method === 'POST') {
-        const { name, email, currentExperience, challengesFinished } = req.body
+        const { avatar, name, level, currentExperience, challengesFinished } = req.body
 
-        if (!name || name === undefined || name === null ||
-            !email || email === undefined || email === null ||
+        if (!avatar || avatar === undefined || avatar === null ||
+            !name || name === undefined || name === null ||
+            !level || level === undefined || level === null ||
             !currentExperience || currentExperience === undefined || currentExperience === null ||
             !challengesFinished || challengesFinished === undefined || challengesFinished === null) {
             res.status(400).json({ error: 'Missing a paramenter' })
@@ -28,8 +30,9 @@ export default async (req: NextApiRequest, res: NextApiResponse<ErrorResponseTyp
         const { db } = await connect()
 
         const response = await db.collection('users').insertOne({
+            avatar,
             name,
-            email,
+            level,
             currentExperience,
             challengesFinished
         })
