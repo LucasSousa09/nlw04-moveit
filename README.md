@@ -17,7 +17,7 @@ Um projeto incrivel da Rocketseat desenvolvido na NLW04 na trilha de React
 - Contextos no React
 - Componentização no React
 - NextJs para uma aplicação "sem backend"
-- Autenticação simples e efieciente com NextAuth
+- Autenticação simples e eficiente com NextAuth
 
 ## Algumas fotos de como a aplicação ficou incrível
 
