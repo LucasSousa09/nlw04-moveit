@@ -34,7 +34,7 @@ span.currentExperience{
     transform: translateX(-50%);
 }
 
-@media(max-width: 660px){
+@media(max-width: 800px){
     .experienceBar{
         width: 90%;
         max-width: 400px; 

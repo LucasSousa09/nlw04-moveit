@@ -1,7 +1,11 @@
 import { useContext } from 'react'
-import { ChallengesContext } from '../contexts/ChallengesContext'
-import styles from '../styles/components/Profile.module.css'
 import { useSession } from 'next-auth/client'
+
+import { UserCircle } from 'phosphor-react'
+
+import { ChallengesContext } from '../contexts/ChallengesContext'
+
+import styles from '../styles/components/Profile.module.css'
 
 export function Profile() {
     const [session, loading] = useSession()
@@ -12,7 +16,7 @@ export function Profile() {
                 session ?
                     (
                         <div className={styles.profileContainer}>
-                            <img src={session.user.image} alt="LucasRodrigues" />
+                            <img src={session.user.image} alt="user" />
                             <div>
                                 <strong>{session.user.name}</strong>
                                 <p>
@@ -24,9 +28,11 @@ export function Profile() {
                     ) :
                     (
                         <div className={styles.profileContainer}>
-                            <img src="" alt="LucasRodrigues" />
                             <div>
-                                <strong>Usuário não identificado</strong>
+                                <div className={styles.userContainer}>
+                                    <UserCircle size={30}/>
+                                    <strong>Usuário não identificado</strong>
+                                </div>
                                 <p>
                                     <img src="icons/level.svg" alt="Level" />
                                     Level {level}

@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import { GetServerSideProps } from 'next'
+
 import { Section } from '../components/Section'
 import { SideBar } from '../components/SideBar'
 import { ExperienceBar } from '../components/ExperienceBar'
+
 import { CountdownProvider } from '../contexts/CountdownContext'
 import { ChallengesProvider } from '../contexts/ChallengesContext'
 
 import styles from '../styles/pages/Home.module.css'
-import React from 'react'
 
 interface HomeProps {
   level: number;

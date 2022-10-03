@@ -1,9 +1,12 @@
 import { useContext, useEffect, useState } from 'react'
+
 import { Profile } from '../components/Profile'
-import { CompletedChalenges } from '../components/CompletedChalenges'
 import { Countdown } from '../components/Countdown'
 import { ChallengeBox } from '../components/ChallengeBox'
+import { CompletedChalenges } from '../components/CompletedChalenges'
+
 import { CountdownContext } from '../contexts/CountdownContext'
+
 import styles from '../styles/components/Section.module.css'
 
 export function Section() {
@@ -20,7 +23,7 @@ export function Section() {
     return (
         <section>
             {
-                windowWidth > 660
+                windowWidth > 800
                     ?
                     <>
                         <div className={styles.leftSide}>
